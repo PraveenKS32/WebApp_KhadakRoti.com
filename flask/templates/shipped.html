@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 5 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>	
+	
+  <nav class="navbar navbar-expand-sm bg-dark ">
+    <div class="text-light ms-4">
+      <h3><b>ℙ𝕂𝕊
+        ℝ𝕠𝕥𝕚'𝕤</b></h3>
+    </div>
+    <div class="btn-group position-absolute text-center end-0  p-3">
+      <ul class="navbar-nav">
+      <li class="nav-item m-1">
+        <a class="nav-link text-light" href="/homepage1"><h5><b>Home</b></h5></a>
+      </li>
+      </ul>
+      <ul class="navbar-nav">
+      <li class="nav-item m-1">
+        <a class="nav-link text-light" href="/logout1"><h5><b>logout</b></h5></a>
+      </li>
+      </ul>
+    </div>
+    </nav>
+	
+	<div class="position-absolute " style="margin-left: 35%; margin-top: 10%; width: 30%;">
+	<div class="container-fluid card border-dark">
+		<h2 class="text-center mt-3"><ul>Payment Receipts</ul></h2>
+		  <div class="mb-4 mt-4">
+			<div class="text-center mb-4">
+				<img src="static/payment.jpg" style="width:100px ; height: 100px;">
+			</div>
+            {% if(email): %}
+            {% if(odetails): %}
+            {% if(unit): %}            
+            {% for em in email: %}
+            {% for ema in odetails: %}
+            {% for emai in unit: %}
+            <center>
+             <table>
+                <tr><th></th><th></th></tr>
+                <tr><td><b>Name:</b></td><td>{{ em[0] }}</td></tr>
+                <tr><td><b>Address:</b></td><td>{{ em[1] }}</td></tr>
+                <tr><td><b>Order-Date:</b></td><td>{{ ema[1] }}</td></tr>
+                <tr><td><b>Delivery-Date:</b></td><td>{{ ema[2] }}</td></tr>
+                <tr><td><b>Item-Name:</b></td><td>{{ emai[0] }}</td></tr>
+                <tr><td><b>Quantity:</b></td><td>{{ emai[1] }}</td></tr>
+                <tr><td><b>Total Amount:</b></td><td>{{ emai[2] }}</td></tr>
+            </table> 
+            </center>  
+            {% endfor %}
+            {% endfor %}
+            {% endfor %}
+            {% endif %}
+            {% endif %}
+            {% endif %}
+			<div class="text-center mt-2">
+				<button type="submit" onclick="window.print()">print</button>
+                <a href="/login1"><button type="submit">Back</button></a>
+
+			</div>
+			
+	</div>	
+	  </body>
+	  </html>
+
+
+	 

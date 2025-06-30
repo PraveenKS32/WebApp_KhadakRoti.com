@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 5 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+	body {
+		background-image: url('static/bgphoto.jpg');
+  background-repeat: no-repeat;
+  }
+  .vertical-center {
+  margin: 0;
+  position: absolute;
+  width: 500px;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+  </style>
+</head>
+<body>
+	<div class="container mt-3">
+		<div class="mt-3 mb-3">
+		  <a href="/">
+			<img style="width: 50px; height: 50px;" src="static\back.png">
+		  </a> 
+		</br> 	 	
+		  <label><h3><b>Back</b></h3></label> 
+		</div>
+	</div>
+	  
+    <div class="position-absolute start-50 end-0 top-50 vertical-center mt-4">
+	<div class="container-fluid card ">
+		<h2 class="text-center">Register Here</h2>
+		<form action="/check_register" onsubmit="return myfunction()">
+			<div class="mb-3 mt-3">
+				<label for="uname">Firstname:</label>
+				<input type="text" class="form-control" placeholder="Enter your name" required="required" name="fname" pattern="[a-zA-Z]+$">
+			  </div>
+			  <div class="mb-3 mt-3">
+				<label for="uname">Lastname:</label>
+				<input type="text" class="form-control" placeholder="Enter your name" required="required" name="lname" pattern="[a-zA-Z]+$">
+			  </div>
+			  <div class="mb-3 mt-3">
+				<label for="uname">Address:</label>
+				<input type="text" class="form-control" placeholder="Enter your Address" required="required" name="address" pattern="[a-zA-Z ]+$">
+			  </div>
+			  <div class="mb-3 mt-3">
+				<label for="uname">Mobile-No:</label>
+				<input type="text" class="form-control" pattern="[0-9]{10}$" placeholder="Enter your Mobile-No" required="required" name="mobile">
+			  </div>
+		  <div class="mb-3 mt-3">
+			<label for="uname">Email:</label>
+			<input type="text" class="form-control" placeholder="Enter your name" required="required" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+		  </div>
+		  <div class="mb-3">
+			<label for="email">Password:</label>
+			<input type=" phonenumber" required="required" id="pswd" class="form-control" required="required" placeholder="*****" name="password">
+		  </div>
+          <div class="mb-3">
+			<label for="pswd">Confirm Password:</label>
+			<input type="number/number" required="required" id="cnfpswd" class="form-control" placeholder="*****" name="cpassword">
+		  </div>
+		  <div class="form-check mb-3">
+			<label class="form-check-label">
+			  <input class="form-check-input" type="checkbox" required="required" name="remember"> Remember me
+			</label>
+		  </div>
+		  <div class="text-center d-grid btn-sm">
+		  <button type="submit" id="btnsubmit" class="btn btn-outline-primary btn-block">Register</button>
+		  <div>
+			<a href="/login1" >Already Registered ! click here</a>
+		  </div>
+		  {% if(msg): %}
+		  <b><h4>{{ msg }}</h4></b>
+		  {% endif %}
+		  </div>
+		</form>
+	  </div>		
+	  </div>
+	  <script>
+		function myfunction(){
+		var pswd=document.getElementById("pswd").value;
+		var cnpswd=document.getElementById("cnfpswd").value;
+		if(pswd !== cnpswd){
+			alert("Password should match Confirm Password ");
+			return false;
+		}
+		
+		else{
+			alert("Registered Successfully");
+			return true;
+		}
+		return true;
+	}
+	  </script>
+	  </body>
+	  </html>								

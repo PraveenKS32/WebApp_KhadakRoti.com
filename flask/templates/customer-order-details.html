@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 5 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+<body class="container-fluid">
+  <div class="mt-4 container-fluid">
+		<nav class="navbar navbar-expand-sm bg-dark ">
+			<div class="text-light ms-4">
+				<h3><b>ℙ𝕂𝕊
+					ℝ𝕠𝕥𝕚'𝕤</b></h3>
+			</div>
+      <div class="btn-group position-absolute text-center end-0  p-3">
+			  <ul class="navbar-nav">
+          <li class="nav-item m-1">
+            <a class="nav-link text-light" href="/"><h5><b>Home</b></h5></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item m-1">
+            <a class="nav-link text-light" href="/vieworders"><h5><b>View-Orders</b></h5></a>
+          </li>
+          </ul>
+			  <ul class="navbar-nav">
+				<li class="nav-item m-1">
+					<a class="nav-link text-light" href="/logout1"><h5><b>logout</b></h5></a>
+				</li>
+			  </ul>
+			</div>
+		  </nav>
+	</div>	
+  <form action="/check-insert-order">
+  <h2 class="text-center mt-4"><b>Order Here</b></h2>
+<div id="wrapper" class="mt-4">
+<div class="mt-4">
+  <table align="center"  cellspacing=2 cellpadding=5 id="data_table" border=1 >
+    <tr>
+    <th>Customer Name</th>
+    <th>Address</th>
+    <th>Order-Date</th>
+    <th>Roti-Name</th>
+    <th>Delivery-Date</th>
+    <th>Quantity</th>
+    <th>Total Amount</th>
+    </tr>
+    <tr id="row1">
+    </tr>
+    
+    <tr id="row2">
+    </tr>
+    
+    <tr id="row3">
+    </tr>
+    
+    <tr id="row4">
+    </tr>
+    <tr id="row5">
+    </tr>
+    <tr id="row6">
+    </tr>
+    <tr id="row7">
+    </tr>
+    <tr>
+      <td name="new_cname">{% if(msg1): %}
+        <b><h5>{{ msg1 }}</h5></b>
+        {% endif %}
+      </td>
+      <td id="new_address">{% if(msg3): %}
+        <b><h5>{{ msg3 }}</h5></b>
+        {% endif %}
+      </td>
+      <td >
+        {% if(date): %}
+  <h5>{{ date }}</h5>
+  {% endif %}
+      </td> 
+      <td> 
+      <div class="dropdown m-1">
+        <select name="new_name" required="required">
+            <optgroup>
+                <option >Jawar Roti</option>
+                <option >Maize Roti</option>
+                <option >Pearl Millet Roti</option>
+                </optgroup>
+        </select>
+     </div>
+    </td>
+    <td><input type="date" name="new_ddate" required="required" id="dateInput" ></td>
+    <td><input type="number" name="new_quantity" required="required" id="new_quantity" pattern="[0-9]*$" min="0" onkeyup="multiply()"></td>
+    <td><input type="text" name="new_amount" id="new_amount" readonly></td>
+    <td>
+      <div class="text-center">
+        <button type="submit">Save</button>
+      </div>
+    </td>
+    </tr>
+    </table>
+    </div>
+    </div>
+    </form>
+    
+  </div>
+  </div>
+  
+    <script>
+  function multiply()
+{
+    a = Number(document.getElementById('new_quantity').value);
+    b =3;
+    c = a * b;
+
+    document.getElementById('new_amount').value = c;
+}
+
+    </script>
+    {% if(msg): %}
+    <script>
+    {
+      alert("{{ msg }}");
+    }
+    </script>
+   <script>
+    document.querySelector("#dateInput").addEventListener("change", function() {
+      var dateInputValue = document.querySelector("#dateInput").value;
+      var today = new Date();
+      if (dateInputValue < today) {
+        alert("The date must be greater than today.");
+        document.querySelector("#dateInput").value = "";
+        return false;
+      }
+    });
+    </script>
+    </script>
+    {% endif %}
+</div>
